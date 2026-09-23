@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Rosery" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/rosery_dark_green</item>
+        <item name="colorSecondary">@color/rosery_green</item>
+        <item name="android:windowBackground">@color/rosery_bg</item>
+    </style>
+
+    <style name="Widget.Rosery.Button" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/rosery_dark_green</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Widget.Rosery.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/rosery_dark_green</item>
+        <item name="android:textColor">@color/rosery_dark_green</item>
+    </style>
+
+    <style name="Widget.Rosery.Button.Secondary" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/rosery_surface</item>
+        <item name="android:textColor">@color/rosery_dark_green</item>
+    </style>
+
+    <style name="Widget.Rosery.Button.Accent" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/rosery_green</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+</resources>
