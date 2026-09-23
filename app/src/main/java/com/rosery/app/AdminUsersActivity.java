@@ -1,50 +1,71 @@
 package com.rosery.app;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.List;
 
+/**
+ * Administrative User Administration Activity.
+ * Enables administrators to manage registered customer accounts, inspect roles,
+ * and toggle account statuses between active and blocked states.
+ */
 public class AdminUsersActivity extends AppCompatActivity {
-    LinearLayout list;
 
-    protected void onCreate(Bundle b) {
-        super.onCreate(b);
+    private LinearLayout listContainer;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_list);
-        ((TextView) findViewById(R.id.adminListTitle)).setText("Manage Customers");
+
+        TextView title = findViewById(R.id.adminListTitle);
+        title.setText("Manage Customers");
+
         findViewById(R.id.adminListBack).setOnClickListener(v -> finish());
-        list = findViewById(R.id.adminListContainer);
-        render();
+        listContainer = findViewById(R.id.adminListContainer);
+
+        renderUsers();
     }
 
-    void render() {
-        list.removeAllViews();
-        List<String[]> us = UserManager.all(this);
-        if (us.isEmpty()) {
-            TextView t = new TextView(this);
-            t.setText("No registered customers yet.");
-            list.addView(t);
+    /**
+     * Renders registered user account cards with activation/blocking capabilities.
+     */
+    private void renderUsers() {
+        listContainer.removeAllViews();
+        List<String[]> users = UserManager.all(this);
+
+        if (users.isEmpty()) {
+            TextView emptyText = new TextView(this);
+            emptyText.setText("No registered customers found.");
+            emptyText.setPadding(16, 24, 16, 24);
+            listContainer.addView(emptyText);
             return;
         }
-        for (String[] u : us) {
+
+        for (String[] user : users) {
             LinearLayout card = new LinearLayout(this);
             card.setOrientation(LinearLayout.VERTICAL);
             card.setPadding(20, 18, 20, 18);
-            TextView t = new TextView(this);
-            t.setText("Name: " + u[0] + "\nEmail: " + u[1] + "\nRole: " + u[3] + "\nStatus: " + u[4]);
-            t.setTextSize(15);
-            card.addView(t);
-            Button b = new Button(this);
-            b.setText("active".equals(u[4]) ? "Block User" : "Activate User");
-            b.setOnClickListener(v -> {
-                UserManager.setStatus(this, u[1], "active".equals(u[4]) ? "blocked" : "active");
-                render();
+
+            TextView infoText = new TextView(this);
+            infoText.setText("Name: " + user[0] + "\nEmail: " + user[1] + "\nRole: " + user[3] + "\nStatus: " + user[4]);
+            infoText.setTextSize(15);
+            card.addView(infoText);
+
+            Button actionButton = new Button(this);
+            actionButton.setText("active".equals(user[4]) ? "Block Account" : "Activate Account");
+            actionButton.setOnClickListener(v -> {
+                String newStatus = "active".equals(user[4]) ? "blocked" : "active";
+                UserManager.setStatus(this, user[1], newStatus);
+                Toast.makeText(this, "User status changed to " + newStatus, Toast.LENGTH_SHORT).show();
+                renderUsers();
             });
-            card.addView(b);
-            list.addView(card);
-            Space sp = new Space(this);
-            list.addView(sp, new LinearLayout.LayoutParams(1, 14));
+            card.addView(actionButton);
+
+            listContainer.addView(card);
+            Space space = new Space(this);
+            listContainer.addView(space, new LinearLayout.LayoutParams(1, 14));
         }
     }
 }
