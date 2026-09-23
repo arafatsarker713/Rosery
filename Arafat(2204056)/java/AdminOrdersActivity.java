@@ -1,9 +1,0 @@
-package com.rosery.app;
-import android.app.AlertDialog;import android.os.Bundle;import android.view.ViewGroup;import android.widget.*;import androidx.appcompat.app.AppCompatActivity;import java.util.List;
-public class AdminOrdersActivity extends AppCompatActivity{
- LinearLayout list;String[] statuses={"Pending","Confirmed","Processing","Shipped","Delivered","Cancelled"};
- protected void onCreate(Bundle b){super.onCreate(b);setContentView(R.layout.activity_admin_list);((TextView)findViewById(R.id.adminListTitle)).setText("Manage Orders");findViewById(R.id.adminListBack).setOnClickListener(v->finish());list=findViewById(R.id.adminListContainer);renderOrders();}
- void renderOrders(){list.removeAllViews();List<String[]> os=OrderManager.all(this);if(os.isEmpty()){addText("No orders yet.");return;}for(String[] o:os){LinearLayout card=new LinearLayout(this);card.setOrientation(LinearLayout.VERTICAL);card.setPadding(20,18,20,18);card.setBackgroundResource(R.drawable.bg_card);TextView t=new TextView(this);t.setText("Order #"+o[0]+"\nCustomer: "+o[8]+"\nDate: "+o[1]+"\nItems: "+o[3]+"   Total: ৳ "+o[2]+"\nPayment: "+o[4]+"\nPhone: "+o[6]+"\nAddress: "+o[5]+"\nStatus: "+o[7]);t.setTextSize(14);t.setTextColor(getColor(R.color.rosery_text_primary));card.addView(t);Button b=new Button(this);b.setText("Update Status");b.setOnClickListener(v->chooseStatus(o[0]));card.addView(b);list.addView(card,new LinearLayout.LayoutParams(-1,-2));Space sp=new Space(this);list.addView(sp,new LinearLayout.LayoutParams(1,14));}}
- void addText(String s){TextView t=new TextView(this);t.setText(s);t.setTextSize(16);t.setPadding(16,24,16,24);list.addView(t);}
- void chooseStatus(String id){new AlertDialog.Builder(this).setTitle("Update Order "+id).setItems(statuses,(d,w)->{OrderManager.updateStatus(this,id,statuses[w]);Toast.makeText(this,"Order updated",Toast.LENGTH_SHORT).show();renderOrders();}).show();}
-}
