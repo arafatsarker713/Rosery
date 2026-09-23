@@ -1,31 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Rosery Admin Dashboard UI Layout -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/rosery_bg">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="20dp">
+
+        <!-- Title Header -->
         <TextView
-            android:text="Rosery Admin Dashboard"
+            android:text="@string/admin_dashboard_title"
             android:textSize="26sp"
             android:textStyle="bold"
             android:textColor="@color/rosery_dark_green"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
         <TextView
-            android:text="Manage the marketplace, orders, stock and customers"
+            android:text="@string/admin_dashboard_subtitle"
             android:textSize="14sp"
             android:layout_marginTop="6dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+        <!-- Real-time Stats Grid -->
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp">
+
+            <!-- Total Orders Metric -->
             <TextView
                 android:id="@+id/statOrders"
                 android:text="0"
@@ -35,12 +44,15 @@
                 android:background="@color/rosery_surface"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
             <TextView
-                android:text="Total Orders"
+                android:text="@string/admin_stat_total_orders"
                 android:paddingLeft="16dp"
                 android:paddingBottom="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
+            <!-- Registered Customers Metric -->
             <TextView
                 android:id="@+id/statUsers"
                 android:text="0"
@@ -50,12 +62,15 @@
                 android:background="@color/rosery_surface"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
             <TextView
-                android:text="Registered Customers"
+                android:text="@string/admin_stat_registered_customers"
                 android:paddingLeft="16dp"
                 android:paddingBottom="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
+            <!-- Total Products Metric -->
             <TextView
                 android:id="@+id/statProducts"
                 android:text="0"
@@ -65,12 +80,15 @@
                 android:background="@color/rosery_surface"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
             <TextView
-                android:text="Products"
+                android:text="@string/admin_stat_products"
                 android:paddingLeft="16dp"
                 android:paddingBottom="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
+            <!-- Total Sales Metric -->
             <TextView
                 android:id="@+id/statSales"
                 android:text="৳ 0"
@@ -80,34 +98,40 @@
                 android:background="@color/rosery_surface"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
             <TextView
-                android:text="Sales (non-cancelled)"
+                android:text="@string/admin_stat_sales"
                 android:paddingLeft="16dp"
                 android:paddingBottom="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
+
+        <!-- Navigation Buttons -->
         <Button
             android:id="@+id/adminOrdersButton"
-            android:text="Manage Orders"
+            android:text="@string/admin_btn_manage_orders"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="8dp"/>
+
         <Button
             android:id="@+id/adminProductsButton"
-            android:text="Manage Products &amp; Stock"
+            android:text="@string/admin_btn_manage_products"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="8dp"/>
+
         <Button
             android:id="@+id/adminUsersButton"
-            android:text="Manage Customers"
+            android:text="@string/admin_btn_manage_customers"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="8dp"/>
+
         <Button
             android:id="@+id/adminLogoutButton"
-            android:text="Logout"
+            android:text="@string/admin_btn_logout"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="16dp"/>

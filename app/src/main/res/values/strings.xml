@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Rosery</string>
+    <string name="app_tagline">Product suppliers and customers through a digital platform</string>
+
+    <!-- Admin String Resources -->
+    <string name="admin_dashboard_title">Rosery Admin Dashboard</string>
+    <string name="admin_dashboard_subtitle">Manage the marketplace, orders, stock and customers</string>
+    <string name="admin_stat_total_orders">Total Orders</string>
+    <string name="admin_stat_registered_customers">Registered Customers</string>
+    <string name="admin_stat_products">Products</string>
+    <string name="admin_stat_sales">Sales (non-cancelled)</string>
+
+    <string name="admin_btn_manage_orders">Manage Orders</string>
+    <string name="admin_btn_manage_products">Manage Products &amp; Stock</string>
+    <string name="admin_btn_manage_customers">Manage Customers</string>
+    <string name="admin_btn_logout">Logout</string>
+
+    <!-- Customer Section Strings -->
+    <string name="title_manage_orders">Manage Orders</string>
+    <string name="title_manage_customers">Manage Customers</string>
+    <string name="title_my_orders">My Orders</string>
+    <string name="no_orders_placed">No orders placed yet. Browse products and place your first order!</string>
+    <string name="currency_symbol">৳</string>
 </resources>
